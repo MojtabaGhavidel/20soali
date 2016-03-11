@@ -1,5 +1,8 @@
 Hapi = require 'hapi'
 server = new Hapi.Server()
+CB = require 'couchbase'
+BaseModel = require('odme').CB
+db= new require('puffer') {host: '127.0.0.1', name:'20soaliwords'}
 random = require("random-js")() # uses the nativeMath engine
 
 
@@ -52,4 +55,31 @@ console.log value
 });
 
 ###
+
+
+
+###
+
+CRUD ADD WORD
+
+####
+
+class Words extends BaseModel
+      source: db
+   props:
+    word: true
+
+words = new Words { word: 'Pasta' }
+
+###
+save to couhbase 
+###
+
+### comment kardam ke instance durust nakune
+words.create(true).then (result) -> console.log result
+
+###
+
+
+
 
