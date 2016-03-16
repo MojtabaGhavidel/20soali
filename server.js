@@ -57,6 +57,46 @@
     }
   });
 
+  server.route({
+    method: 'GET',
+    path: '/addword',
+    handler: function(request, reply) {
+      return reply.file('./public/addword.html');
+    }
+  });
+
+
+  /*
+  ADD WORD
+   */
+
+
+  /*
+  server.route 
+    method: 'POST'
+    path: '/addword'
+    config: payload: output: 'data'
+    handler: (request, response) ->
+      your_variable = request.payload.your_variable
+      console.log your_variable
+      return
+   */
+
+  server.route({
+    method: 'POST',
+    path: '/addword',
+    config: {
+      payload: {
+        output: 'data'
+      }
+    },
+    handler: function(request, response) {
+      var your_variable;
+      your_variable = request.payload.your_variable;
+      console.log(your_variable);
+    }
+  });
+
   value = random.integer(1, 100);
 
   console.log(value);
@@ -66,7 +106,7 @@
     server.route({
           method: 'GET',
           path: '/hello',
-          handler: function (request, reply) {
+          handler: (request, reply) {
               reply.file('./public/hello.html');
           }
       });
@@ -102,8 +142,14 @@
     word: 'Pasta'
   });
 
-  words.create(true).then(function(result) {
-    return console.log(result);
-  });
+
+  /*
+  save to couhbase
+   */
+
+
+  /* comment kardam ke instance durust nakune
+  words.create(true).then (result) -> console.log result
+   */
 
 }).call(this);

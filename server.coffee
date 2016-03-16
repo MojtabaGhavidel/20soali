@@ -36,7 +36,43 @@ server.route
     method: 'GET'
     path: '/'
     handler: (request, reply) ->
-        reply.file './public/index.html' 
+        reply.file './public/index.html'
+
+
+
+
+server.route
+    method: 'GET'
+    path: '/addword'
+    handler: (request, reply) ->
+        reply.file './public/addword.html'  
+
+###
+ADD WORD
+###
+###
+server.route 
+  method: 'POST'
+  path: '/addword'
+  config: payload: output: 'data'
+  handler: (request, response) ->
+    your_variable = request.payload.your_variable
+    console.log your_variable
+    return
+###
+
+server.route
+  method: 'POST'
+  path: '/addword'
+  config: payload: output: 'data'
+  handler: (request, response) ->
+    your_variable = request.payload.your_variable
+    console.log your_variable
+    return
+
+
+
+
 
 
 value = random.integer(1, 100)
@@ -48,7 +84,7 @@ console.log value
   server.route({
         method: 'GET',
         path: '/hello',
-        handler: function (request, reply) {
+        handler: (request, reply) {
             reply.file('./public/hello.html');
         }
     });
